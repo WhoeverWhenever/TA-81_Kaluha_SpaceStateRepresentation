@@ -1,0 +1,10 @@
+E:\Code\Modeling\TwoTanks\bin\Debug\TwoTanks.exe.config
+E:\Code\Modeling\TwoTanks\bin\Debug\TwoTanks.exe
+E:\Code\Modeling\TwoTanks\bin\Debug\TwoTanks.pdb
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.csprojAssemblyReference.cache
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.MainForm.resources
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.Properties.Resources.resources
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.csproj.GenerateResource.cache
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.csproj.CoreCompileInputs.cache
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.exe
+E:\Code\Modeling\TwoTanks\obj\Debug\TwoTanks.pdb
