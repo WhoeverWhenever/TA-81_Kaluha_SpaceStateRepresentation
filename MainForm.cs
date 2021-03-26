@@ -15,7 +15,7 @@ namespace TwoTanks
 
         private ControlSystem twoTanks { get; set; }
 
-        private int chartLimit = 100;
+        private int chartLimit = 50;
         public MainForm()
         {
             InitializeComponent();
@@ -27,6 +27,7 @@ namespace TwoTanks
             twoTanks.Calc();
             chPlot.Series[0].Points.AddXY(twoTanks.Time, twoTanks.Out1);
             chPlot.Series[1].Points.AddXY(twoTanks.Time, twoTanks.Out2);
+           
 
             if (chPlot.Series[0].Points.Count >= chartLimit)
             {
@@ -34,11 +35,15 @@ namespace TwoTanks
                 chPlot.Series[1].Points.RemoveAt(0);
                 chPlot.ChartAreas[0].RecalculateAxesScale();
             }
+            tbPIDK.Text = twoTanks.pid.K.ToString("F2");
+            tbPIDTi.Text = twoTanks.pid.Ti.ToString("F2");
+            tbPIDKd.Text = twoTanks.pid.Kd.ToString("F2");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             tmModeling.Start();
+         
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -148,6 +153,68 @@ namespace TwoTanks
         {
             twoTanks.ValveOut1++;
             tbValveOut1.Text = twoTanks.ValveOut1.ToString("F2");
+        }
+
+        private void btnSPUp_Click(object sender, EventArgs e)
+        {
+            twoTanks.SetPoint++;
+            tbSetPoint.Text = twoTanks.SetPoint.ToString("F2");
+        }
+
+        private void btnSPDown_Click(object sender, EventArgs e)
+        {
+            twoTanks.SetPoint--;
+            tbSetPoint.Text = twoTanks.SetPoint.ToString("F2");
+        }
+
+        private void tbSetPoint_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            if (Double.TryParse(tbSetPoint.Text, out val))
+            {
+                twoTanks.SetPoint = val;
+                tbSetPoint.Text = twoTanks.SetPoint.ToString("F2");
+            }
+        }
+
+        private void tbPIDK_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            if (Double.TryParse(tbPIDK.Text, out val))
+            {
+                twoTanks.pid.K = val;
+                tbPIDK.Text = twoTanks.pid.K.ToString("F2");
+            }
+        }
+
+        private void tbPIDTi_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            if (Double.TryParse(tbPIDTi.Text, out val))
+            {
+                twoTanks.pid.Ti = val;
+                tbPIDTi.Text = twoTanks.pid.Ti.ToString("F2");
+            }
+        }
+
+        private void tbPIDKd_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            if (Double.TryParse(tbPIDKd.Text, out val))
+            {
+                twoTanks.pid.Kd = val;
+                tbPIDKd.Text = twoTanks.pid.Kd.ToString("F2");
+            }
+        }
+
+        private void btnMode_Click(object sender, EventArgs e)
+        {
+            twoTanks.pid.IsManual = !twoTanks.pid.IsManual;
+            btnMode.Text = twoTanks.pid.IsManual ? "Manual" : "Auto";
+            btnUpIn1.Enabled = twoTanks.pid.IsManual;
+            btnDownIn1.Enabled = twoTanks.pid.IsManual;
+            tbValveIn1.Enabled = twoTanks.pid.IsManual;
+            tbValveIn1.Text = twoTanks.ValveIn1.ToString("F2");
         }
     }
 }

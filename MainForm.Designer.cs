@@ -59,6 +59,17 @@ namespace TwoTanks
             this.lbIn2 = new System.Windows.Forms.Label();
             this.lb12 = new System.Windows.Forms.Label();
             this.lbOut1 = new System.Windows.Forms.Label();
+            this.tbPIDK = new System.Windows.Forms.TextBox();
+            this.tbPIDTi = new System.Windows.Forms.TextBox();
+            this.tbPIDKd = new System.Windows.Forms.TextBox();
+            this.lbPIDK = new System.Windows.Forms.Label();
+            this.lbPIDTi = new System.Windows.Forms.Label();
+            this.lbPIDKd = new System.Windows.Forms.Label();
+            this.tbSetPoint = new System.Windows.Forms.TextBox();
+            this.btnSPUp = new System.Windows.Forms.Button();
+            this.btnSPDown = new System.Windows.Forms.Button();
+            this.lbSetPoint = new System.Windows.Forms.Label();
+            this.btnMode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chPlot)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +93,7 @@ namespace TwoTanks
             this.chPlot.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chPlot.Legends.Add(legend1);
-            this.chPlot.Location = new System.Drawing.Point(62, 222);
+            this.chPlot.Location = new System.Drawing.Point(71, 240);
             this.chPlot.Name = "chPlot";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -146,6 +157,7 @@ namespace TwoTanks
             // 
             // btnDownIn1
             // 
+            this.btnDownIn1.Enabled = false;
             this.btnDownIn1.Location = new System.Drawing.Point(812, 12);
             this.btnDownIn1.Name = "btnDownIn1";
             this.btnDownIn1.Size = new System.Drawing.Size(34, 31);
@@ -156,6 +168,7 @@ namespace TwoTanks
             // 
             // btnUpIn1
             // 
+            this.btnUpIn1.Enabled = false;
             this.btnUpIn1.Location = new System.Drawing.Point(934, 12);
             this.btnUpIn1.Name = "btnUpIn1";
             this.btnUpIn1.Size = new System.Drawing.Size(34, 31);
@@ -166,6 +179,7 @@ namespace TwoTanks
             // 
             // tbValveIn1
             // 
+            this.tbValveIn1.Enabled = false;
             this.tbValveIn1.Location = new System.Drawing.Point(862, 16);
             this.tbValveIn1.Name = "tbValveIn1";
             this.tbValveIn1.Size = new System.Drawing.Size(50, 22);
@@ -300,11 +314,128 @@ namespace TwoTanks
             this.lbOut1.TabIndex = 23;
             this.lbOut1.Text = "Out1";
             // 
+            // tbPIDK
+            // 
+            this.tbPIDK.Location = new System.Drawing.Point(71, 151);
+            this.tbPIDK.Name = "tbPIDK";
+            this.tbPIDK.Size = new System.Drawing.Size(50, 22);
+            this.tbPIDK.TabIndex = 24;
+            this.tbPIDK.Text = "0";
+            this.tbPIDK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPIDK.TextChanged += new System.EventHandler(this.tbPIDK_TextChanged);
+            // 
+            // tbPIDTi
+            // 
+            this.tbPIDTi.Location = new System.Drawing.Point(71, 179);
+            this.tbPIDTi.Name = "tbPIDTi";
+            this.tbPIDTi.Size = new System.Drawing.Size(50, 22);
+            this.tbPIDTi.TabIndex = 25;
+            this.tbPIDTi.Text = "0";
+            this.tbPIDTi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPIDTi.TextChanged += new System.EventHandler(this.tbPIDTi_TextChanged);
+            // 
+            // tbPIDKd
+            // 
+            this.tbPIDKd.Location = new System.Drawing.Point(71, 207);
+            this.tbPIDKd.Name = "tbPIDKd";
+            this.tbPIDKd.Size = new System.Drawing.Size(50, 22);
+            this.tbPIDKd.TabIndex = 26;
+            this.tbPIDKd.Text = "0";
+            this.tbPIDKd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPIDKd.TextChanged += new System.EventHandler(this.tbPIDKd_TextChanged);
+            // 
+            // lbPIDK
+            // 
+            this.lbPIDK.AutoSize = true;
+            this.lbPIDK.Location = new System.Drawing.Point(38, 154);
+            this.lbPIDK.Name = "lbPIDK";
+            this.lbPIDK.Size = new System.Drawing.Size(17, 17);
+            this.lbPIDK.TabIndex = 27;
+            this.lbPIDK.Text = "K";
+            // 
+            // lbPIDTi
+            // 
+            this.lbPIDTi.AutoSize = true;
+            this.lbPIDTi.Location = new System.Drawing.Point(38, 184);
+            this.lbPIDTi.Name = "lbPIDTi";
+            this.lbPIDTi.Size = new System.Drawing.Size(20, 17);
+            this.lbPIDTi.TabIndex = 28;
+            this.lbPIDTi.Text = "Ti";
+            // 
+            // lbPIDKd
+            // 
+            this.lbPIDKd.AutoSize = true;
+            this.lbPIDKd.Location = new System.Drawing.Point(38, 210);
+            this.lbPIDKd.Name = "lbPIDKd";
+            this.lbPIDKd.Size = new System.Drawing.Size(25, 17);
+            this.lbPIDKd.TabIndex = 29;
+            this.lbPIDKd.Text = "Kd";
+            // 
+            // tbSetPoint
+            // 
+            this.tbSetPoint.Location = new System.Drawing.Point(71, 114);
+            this.tbSetPoint.Name = "tbSetPoint";
+            this.tbSetPoint.Size = new System.Drawing.Size(50, 22);
+            this.tbSetPoint.TabIndex = 32;
+            this.tbSetPoint.Text = "0";
+            this.tbSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSetPoint.TextChanged += new System.EventHandler(this.tbSetPoint_TextChanged);
+            // 
+            // btnSPUp
+            // 
+            this.btnSPUp.Location = new System.Drawing.Point(143, 110);
+            this.btnSPUp.Name = "btnSPUp";
+            this.btnSPUp.Size = new System.Drawing.Size(34, 31);
+            this.btnSPUp.TabIndex = 31;
+            this.btnSPUp.Text = ">";
+            this.btnSPUp.UseVisualStyleBackColor = true;
+            this.btnSPUp.Click += new System.EventHandler(this.btnSPUp_Click);
+            // 
+            // btnSPDown
+            // 
+            this.btnSPDown.Location = new System.Drawing.Point(21, 110);
+            this.btnSPDown.Name = "btnSPDown";
+            this.btnSPDown.Size = new System.Drawing.Size(34, 31);
+            this.btnSPDown.TabIndex = 30;
+            this.btnSPDown.Text = "<";
+            this.btnSPDown.UseVisualStyleBackColor = true;
+            this.btnSPDown.Click += new System.EventHandler(this.btnSPDown_Click);
+            // 
+            // lbSetPoint
+            // 
+            this.lbSetPoint.AutoSize = true;
+            this.lbSetPoint.Location = new System.Drawing.Point(68, 84);
+            this.lbSetPoint.Name = "lbSetPoint";
+            this.lbSetPoint.Size = new System.Drawing.Size(65, 17);
+            this.lbSetPoint.TabIndex = 33;
+            this.lbSetPoint.Text = "Set Point";
+            // 
+            // btnMode
+            // 
+            this.btnMode.Location = new System.Drawing.Point(840, 188);
+            this.btnMode.Name = "btnMode";
+            this.btnMode.Size = new System.Drawing.Size(102, 39);
+            this.btnMode.TabIndex = 34;
+            this.btnMode.Text = "Auto";
+            this.btnMode.UseVisualStyleBackColor = true;
+            this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 551);
+            this.Controls.Add(this.btnMode);
+            this.Controls.Add(this.lbSetPoint);
+            this.Controls.Add(this.tbSetPoint);
+            this.Controls.Add(this.btnSPUp);
+            this.Controls.Add(this.btnSPDown);
+            this.Controls.Add(this.lbPIDKd);
+            this.Controls.Add(this.lbPIDTi);
+            this.Controls.Add(this.lbPIDK);
+            this.Controls.Add(this.tbPIDKd);
+            this.Controls.Add(this.tbPIDTi);
+            this.Controls.Add(this.tbPIDK);
             this.Controls.Add(this.lbOut1);
             this.Controls.Add(this.lb12);
             this.Controls.Add(this.lbIn2);
@@ -367,6 +498,17 @@ namespace TwoTanks
         private System.Windows.Forms.Label lbIn2;
         private System.Windows.Forms.Label lb12;
         private System.Windows.Forms.Label lbOut1;
+        private System.Windows.Forms.TextBox tbPIDK;
+        private System.Windows.Forms.TextBox tbPIDTi;
+        private System.Windows.Forms.TextBox tbPIDKd;
+        private System.Windows.Forms.Label lbPIDK;
+        private System.Windows.Forms.Label lbPIDTi;
+        private System.Windows.Forms.Label lbPIDKd;
+        private System.Windows.Forms.TextBox tbSetPoint;
+        private System.Windows.Forms.Button btnSPUp;
+        private System.Windows.Forms.Button btnSPDown;
+        private System.Windows.Forms.Label lbSetPoint;
+        private System.Windows.Forms.Button btnMode;
     }
 }
 
