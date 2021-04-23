@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TwoTanks
+namespace TestModel
 {
     public partial class MainForm : Form
     {
@@ -25,7 +25,7 @@ namespace TwoTanks
         private void tmModeling_Tick(object sender, EventArgs e)
         {
             twoTanks.Calc();
-            chPlot.Series[0].Points.AddXY(twoTanks.Time, twoTanks.Out1);
+            chPlot.Series[0].Points.AddXY(twoTanks.Time, twoTanks.Y[0,0]);
             chPlot.Series[1].Points.AddXY(twoTanks.Time, twoTanks.Out2);
            
 
@@ -43,7 +43,6 @@ namespace TwoTanks
         private void btnStart_Click(object sender, EventArgs e)
         {
             tmModeling.Start();
-         
         }
 
         private void MainForm_Load(object sender, EventArgs e)

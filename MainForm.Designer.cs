@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace TwoTanks
+namespace TestModel
 {
     partial class MainForm
     {
@@ -86,8 +86,8 @@ namespace TwoTanks
             // 
             // chPlot
             // 
-            this.chPlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.chPlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
             this.chPlot.ChartAreas.Add(chartArea1);
